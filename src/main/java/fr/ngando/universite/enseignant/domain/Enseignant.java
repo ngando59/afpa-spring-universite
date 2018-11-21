@@ -19,7 +19,6 @@ import fr.ngando.universite.matiere.domain.Matiere;
 @Entity
 @Table(name = "tbl_enseignant")
 public class Enseignant implements Serializable {
-
 	private static final long serialVersionUID = 6605028813495639388L;
 	@Id
 	@Column(name = "id")
