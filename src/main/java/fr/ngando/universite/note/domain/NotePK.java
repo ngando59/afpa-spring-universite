@@ -26,12 +26,6 @@ public class NotePK implements Serializable {
 		this.matiere = matiere;
 	}
 
-//	@Override
-//	public boolean equals(Object o) {
-//		return ((o instanceof NotePK) && (this.etudiant.equals(((NotePK) o).getEtudiant()))
-//				&& (this.matiere.equals(((NotePK) o).getMatiere())));
-//	}
-
 	public Integer getEtudiant() {
 		return etudiant;
 	}

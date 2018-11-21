@@ -22,11 +22,11 @@ public class Note implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_matiere", insertable = false, updatable = false)
-	private Matiere matiere;
+	private transient Matiere matiere;
 
 	@ManyToOne
 	@JoinColumn(name = "id_etudiant", insertable = false, updatable = false)
-	private Etudiant etudiant;
+	private transient Etudiant etudiant;
 
 	@Column(name = "note")
 	private Double note;

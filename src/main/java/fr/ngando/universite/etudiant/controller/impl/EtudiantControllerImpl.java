@@ -21,9 +21,9 @@ import fr.ngando.universite.note.domain.Note;
 public class EtudiantControllerImpl implements IEtudiantController {
 	private final static String PAGE_ETUDIANT = "Etudiant";
 	private final static String PAGE_ETUDIANTS = "Etudiants";
-	public final static String PAGE = "page";
-	public final static String ETUDIANT = "etudiant";
-	public final static String ETUDIANTS = "etudiants";
+	public final static String ATTR_PAGE = "page";
+	public final static String ATTR_ETUDIANT = "etudiant";
+	public final static String ATTR_ETUDIANTS = "etudiants";
 	@Autowired
 	private IEtudiantBusiness etudiantBusiness;
 
@@ -40,8 +40,8 @@ public class EtudiantControllerImpl implements IEtudiantController {
 	public String etudiant(Model model, Integer id) {
 		Etudiant etudiant = etudiantBusiness.findOneById(id);
 		List<Note> noteMoreThan10 = etudiantBusiness.findAllNoteMoreThan10(etudiant);
-		model.addAttribute(PAGE, PAGE_ETUDIANT);
-		model.addAttribute(ETUDIANT, etudiant);
+		model.addAttribute(ATTR_PAGE, PAGE_ETUDIANT);
+		model.addAttribute(ATTR_ETUDIANT, etudiant);
 		model.addAttribute("noteMoreThan10", noteMoreThan10);
 		return "etudiant/etudiant";
 	}
@@ -57,9 +57,9 @@ public class EtudiantControllerImpl implements IEtudiantController {
 		Etudiant etudiant = new Etudiant(null, 10514, "Sparrow", "Jack", dateNaissance, 'M', "j.pirate@gmail.com",
 				"Pacifique");
 		List<Etudiant> etudiants = etudiantBusiness.findAll();
-		model.addAttribute(PAGE, PAGE_ETUDIANTS);
-		model.addAttribute(ETUDIANTS, etudiants);
-		model.addAttribute(ETUDIANT, etudiant);
+		model.addAttribute(ATTR_PAGE, PAGE_ETUDIANTS);
+		model.addAttribute(ATTR_ETUDIANTS, etudiants);
+		model.addAttribute(ATTR_ETUDIANT, etudiant);
 		return "etudiant/etudiants";
 	}
 
@@ -73,9 +73,9 @@ public class EtudiantControllerImpl implements IEtudiantController {
 		} else if (message.startsWith("[S]:")) {
 			model.addAttribute("messageSuccess", message.substring(4));
 		}
-		model.addAttribute(PAGE, PAGE_ETUDIANTS);
-		model.addAttribute(ETUDIANTS, etudiants);
-		model.addAttribute(ETUDIANT, etudiant);
+		model.addAttribute(ATTR_PAGE, PAGE_ETUDIANTS);
+		model.addAttribute(ATTR_ETUDIANTS, etudiants);
+		model.addAttribute(ATTR_ETUDIANT, etudiant);
 		return "etudiant/etudiants";
 	}
 
@@ -90,8 +90,8 @@ public class EtudiantControllerImpl implements IEtudiantController {
 	@GetMapping("/etudiant/update")
 	public String update(Model model, Integer id) {
 		Etudiant etudiant = etudiantBusiness.findOneById(id);
-		model.addAttribute(PAGE, PAGE_ETUDIANT);
-		model.addAttribute(ETUDIANT, etudiant);
+		model.addAttribute(ATTR_PAGE, PAGE_ETUDIANT);
+		model.addAttribute(ATTR_ETUDIANT, etudiant);
 		return "etudiant/update";
 	}
 

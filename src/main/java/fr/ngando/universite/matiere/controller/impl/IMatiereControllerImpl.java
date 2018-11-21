@@ -21,9 +21,9 @@ public class IMatiereControllerImpl implements IMatiereController {
 
 	private final static String PAGE_MATIERE = "Matiere";
 	private final static String PAGE_MATIERES = "Matieres";
-	public final static String PAGE = "page";
-	public final static String MATIERE = "Matiere";
-	public final static String MATIERES = "Matieres";
+	public final static String ATTR_PAGE = "page";
+	public final static String ATTR_MATIERE = "Matiere";
+	public final static String ATTR_MATIERES = "Matieres";
 
 	@Autowired
 	private IMatiereBusiness matiereBusiness;
@@ -33,8 +33,8 @@ public class IMatiereControllerImpl implements IMatiereController {
 	public String matiere(Model model, @RequestParam Integer id) {
 		Matiere matiere = matiereBusiness.findOneById(id);
 		List<Note> notes = matiereBusiness.findAllNotesByMatiere(matiere);
-		model.addAttribute(PAGE, PAGE_MATIERE);
-		model.addAttribute(MATIERE, matiere);
+		model.addAttribute(ATTR_PAGE, PAGE_MATIERE);
+		model.addAttribute(ATTR_MATIERE, matiere);
 		model.addAttribute("notes", notes);
 		return "matiere/matiere";
 	}
@@ -44,8 +44,8 @@ public class IMatiereControllerImpl implements IMatiereController {
 	public String matieres(Model model) {
 
 		List<Matiere> matieres = matiereBusiness.findAll();
-		model.addAttribute(PAGE, PAGE_MATIERES);
-		model.addAttribute(MATIERES, matieres);
+		model.addAttribute(ATTR_PAGE, PAGE_MATIERES);
+		model.addAttribute(ATTR_MATIERES, matieres);
 		return "matiere/matieres";
 	}
 
@@ -54,9 +54,9 @@ public class IMatiereControllerImpl implements IMatiereController {
 	public String update(Model model, Integer id) {
 		Matiere matiere = matiereBusiness.findOneById(id);
 		List<Enseignant> enseignants = matiereBusiness.findAllEnseigant();
-		model.addAttribute(PAGE, PAGE_MATIERE);
+		model.addAttribute(ATTR_PAGE, PAGE_MATIERE);
 		model.addAttribute("enseignants", enseignants);
-		model.addAttribute(MATIERE, matiere);
+		model.addAttribute(ATTR_MATIERE, matiere);
 		return "matiere/update";
 	}
 
