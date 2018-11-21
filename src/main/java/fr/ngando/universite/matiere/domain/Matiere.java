@@ -1,5 +1,6 @@
 package fr.ngando.universite.matiere.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,9 @@ import fr.ngando.universite.note.domain.Note;
 
 @Entity
 @Table(name = "tbl_matiere")
-public class Matiere {
+public class Matiere implements Serializable {
+
+	private static final long serialVersionUID = -5603795345652331297L;
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

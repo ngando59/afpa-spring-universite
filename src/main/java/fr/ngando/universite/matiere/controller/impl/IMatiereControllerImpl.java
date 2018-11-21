@@ -21,9 +21,9 @@ public class IMatiereControllerImpl implements IMatiereController {
 
 	private final static String PAGE_MATIERE = "Matiere";
 	private final static String PAGE_MATIERES = "Matieres";
-	public final static String ATTR_PAGE = "page";
-	public final static String ATTR_MATIERE = "Matiere";
-	public final static String ATTR_MATIERES = "Matieres";
+	private final static String ATTR_PAGE = "page";
+	private final static String ATTR_MATIERE = "matiere";
+	private final static String ATTR_MATIERES = "matieres";
 
 	@Autowired
 	private IMatiereBusiness matiereBusiness;
@@ -42,7 +42,6 @@ public class IMatiereControllerImpl implements IMatiereController {
 	@Override
 	@RequestMapping("/matieres")
 	public String matieres(Model model) {
-
 		List<Matiere> matieres = matiereBusiness.findAll();
 		model.addAttribute(ATTR_PAGE, PAGE_MATIERES);
 		model.addAttribute(ATTR_MATIERES, matieres);

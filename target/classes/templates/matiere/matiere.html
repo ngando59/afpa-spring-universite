@@ -33,7 +33,7 @@
 						<tbody>
 							<tr th:each="note : ${notes}">
 								<td class="text-left"><a th:href="@{/etudiant(id=${note.etudiant.id})}" th:text="${note.etudiant.nom}+' '+${note.etudiant.prenom}"></a></td>
-								<td class="text-left" th:text="${T(fr.ngando.universite.Utils).print2df(note.note)}"></td>
+								<td class="text-left" th:text="${T(fr.ngando.universite.Utils).print2df(note.value)}"></td>
 							</tr>
 						</tbody>
 					</table>
