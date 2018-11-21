@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="'Universite | '+${page}"></title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<link rel="stylesheet" type="text/css" th:href="@{js/bootstrap-3.3.7/dist/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/default.css}">
+</head>
+<body>
+	<div class="container">
+		<header th:insert="fragments/header.html :: header"></header>
+  		<section class="content">
+  		  	<h2>Matieres</h2>
+	  		<table class="table table-striped">
+    			<thead>
+				      <tr>
+				        <th>Numéro matière</th>
+				        <th>Intitulé</th>
+				        <th>coefficient</th>
+				        <th>Date de début</th>
+				        <th>Date de début</th>
+				        <th>Enseignant</th>
+				        <th></th>
+				      </tr>
+    			</thead>
+    			<tbody>
+	      			<tr th:each="matiere : ${matieres}">
+	        			<td th:text="${matiere.numeroMatiere}"></td>
+	        			<td th:text="${matiere.nom}"></td>
+	        			<td th:text="${matiere.coef}"></td>
+	        			<td th:text="${#dates.format(matiere.dateDebut,'dd/MM/yyyy')}"></td>
+	        			<td th:text="${#dates.format(matiere.dateFin,'dd/MM/yyyy')}"></td>
+	        			<td>
+	        				<a th:href="@{/enseignant(id=${matiere.enseignant.id})}" th:text="${matiere.enseignant.prenom}+ ' '+${matiere.enseignant.nom}"></a>
+	        			</td>
+	        			<td>
+	        				<a th:href="@{/matiere(id=${matiere.id})}" title="aperçu"><i class="far fa-eye"></i></a>
+	        				<a th:href="@{/matiere/update(id=${matiere.id})}" title="modifier"><i class="far fa-edit"></i></a>
+	        			</td>
+	      			</tr>
+    			</tbody>
+  			</table>
+  		</section>
+	</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="'Universite | '+${page}"></title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<link rel="stylesheet" type="text/css" th:href="@{js/bootstrap-3.3.7/dist/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/default.css}">
+</head>
+<body>
+	<div class="container">
+		<header th:insert="fragments/header.html :: header"></header>
+  		<section class="content">
+  		  	<iframe th:src="@{js/projet-mario/moby2.htm}"></iframe>	  		
+  		</section>
+	</div>
+</body>
+</html>

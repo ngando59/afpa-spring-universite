@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="'Universite | '+${page}"></title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<link rel="stylesheet" type="text/css" th:href="@{js/bootstrap-3.3.7/dist/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/default.css}">
+</head>
+<body>
+	<div class="container">
+		<header th:insert="fragments/header.html :: header"></header>
+		<section class="content">
+		  	<h2>Etudiant</h2>
+	  		<div class="row" th:if="${etudiant != null}">
+	  			<div class="div-ico-user">
+	  				<img class="ico-user" alt="" th:src="@{img/17239-200.png}" th:if="${etudiant.sexe} == 'F'">
+	    			<img class="ico-user" alt="" th:src="@{img/17241-200.png}" th:if="${etudiant.sexe} == 'M'">
+	  			</div>
+	  			<div class="row">
+	  				<fieldset class="infos-perso col-md-3">
+	  					<legend>Informations</legend>
+	  					<i class="fas fa-id-card"></i><span th:text="${etudiant.numEtudiant}"></span><br>
+						<i class="fas fa-user"></i><span th:text="${etudiant.nom}+' '+${etudiant.prenom}"></span><br>
+						<i class="fas fa-birthday-cake"></i><span th:text="${#dates.format(etudiant.dateNaissance,'dd/MM/yyyy')}"></span><br>
+						<i class="fas fa-at"></i><span th:text="${etudiant.email}"></span><br>
+						<i class="fas fa-map-marked-alt"></i><span th:text="${etudiant.adresse}"></span><br>
+	  				</fieldset>
+	  				<fieldset class="infos-perso col-md-5">
+	  					<legend>Notes</legend>
+	  					<table class="table table-striped">
+	  						<thead>
+	  							<tr>
+		  							<th>Matière</th>
+		  							<th class="text-right">Note</th>
+		  							<th class="text-right">Coef</th>
+		  							<th class="text-right">Total</th>
+		  							<th class="text-right">Max</th>
+	  							</tr>
+	  						</thead>
+	  						<tbody>
+	  							<tr th:each="note : ${etudiant.notes}">
+	  								<td th:text="${note.matiere.nom}"></td>
+	  								<td class="text-right" th:text="${T(fr.ngando.universite.Utils).print2df(note.note)}"></td>
+	  								<td class="text-right text-muted" th:text="${note.matiere.coef}"></td>
+	  								<td class="text-right" th:text="${T(fr.ngando.universite.Utils).print2df(note.note * note.matiere.coef)}"></td>
+	  								<td class="text-right text-muted" th:text="${T(fr.ngando.universite.Utils).noteMax(note)}"></td>
+	  							</tr>
+	  							<tr>
+	  								<td></td>
+	  								<td class="text-right"><b>Total :</b> </td>
+	  								<td class="text-right"></td>
+	  								<td class="text-right" th:text="${T(fr.ngando.universite.Utils).print2df(T(fr.ngando.universite.Utils).noteTotal(etudiant.notes))}"></td>
+	  								<td class="text-right text-muted" th:text="${T(fr.ngando.universite.Utils).coefTotal(etudiant.notes)}"></td>
+	  							</tr>
+	  						</tbody>
+	  						<tfoot>
+	  							<tr>
+	  								<td></td>
+	  								<td class="text-right"><b>Moyenne :</b> </td>
+	  								<td class="text-right"></td>
+	  								<td class="text-right"><b th:text="${T(fr.ngando.universite.Utils).print2df(T(fr.ngando.universite.Utils).moyenne(etudiant.notes))}"></b></td>
+	  								<td></td>
+	  							</tr>
+	  						</tfoot>		
+	  					</table>
+	  				</fieldset>
+	  				<fieldset class="infos-perso col-md-3">
+	  					<legend>Validée</legend>
+	  					<table class="table table-striped">
+	  						<thead>
+	  							<tr>
+		  							<th>Matière</th>
+		  							<th class="text-right">Note</th>
+	  							</tr>
+	  						</thead>
+	  						<tbody>
+	  							<tr th:each="note : ${noteMoreThan10}">
+	  								<td th:text="${note.matiere.nom}"></td>
+	  								<td class="text-right" th:text="${T(fr.ngando.universite.Utils).print2df(note.note)}"></td>
+	  							</tr>
+	  						</tbody>	  						
+	  					</table>
+	  				</fieldset>
+	  			</div>
+	  		</div>
+		</section>
+	</div>
+</body>
+</html>

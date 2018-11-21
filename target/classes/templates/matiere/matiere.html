@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="'Universite | '+${page}"></title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<link rel="stylesheet" type="text/css" th:href="@{js/bootstrap-3.3.7/dist/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/default.css}">
+</head>
+<body>
+	<div class="container">
+		<header th:insert="fragments/header.html :: header"></header>
+  		<section class="content" th:if="${matiere != null}">
+  			<div class="col-md-4 border-right">
+  				<h3 th:text="${matiere.nom}"></h3>
+  				<ul>
+  					<li><i class="fas fa-chalkboard-teacher"></i><a th:href="@{/enseignant(id=${matiere.enseignant.id})}" th:text="${matiere.enseignant.prenom}+ ' '+${matiere.enseignant.nom}"></a></li>
+  					<li><i class="fas fa-calendar-alt"></i><span th:text="${#dates.format(matiere.dateDebut,'dd/MM/yyyy')}+' au '+ ${#dates.format(matiere.dateFin,'dd/MM/yyyy')}"></span> </li>
+  					<li>Coef : <span th:text="${matiere.coef}"></span> </li>
+  				</ul>
+  			</div>
+  			<div class="col-md-8">
+  				<fieldset>
+  					<legend>Notes :</legend>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class="text-left">Etudiant</th>
+								<th class="text-left">Note</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="note : ${notes}">
+								<td class="text-left"><a th:href="@{/etudiant(id=${note.etudiant.id})}" th:text="${note.etudiant.nom}+' '+${note.etudiant.prenom}"></a></td>
+								<td class="text-left" th:text="${T(fr.ngando.universite.Utils).print2df(note.note)}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</fieldset>
+  			</div>		
+  		</section>
+	</div>
+</body>
+</html>

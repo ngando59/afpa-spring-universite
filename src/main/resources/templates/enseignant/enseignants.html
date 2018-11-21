@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="'Universite | '+${page}"></title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<link rel="stylesheet" type="text/css" th:href="@{js/bootstrap-3.3.7/dist/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/default.css}">
+</head>
+<body>
+	<div class="container">
+		<header th:insert="fragments/header.html :: header"></header>
+  		<section class="content">
+  		  	<h2>Enseignants</h2>
+  		  	<a class="btn btn-success" href="new-enseignant"><i class="fas fa-user-plus"></i> ajouter</a>
+  		  	<p th:if="${messageSuccess != null}" class="text-success text-center" th:text="${messageSuccess}"></p>
+	  		<ul class="divUsers">
+	    		<li th:each="enseignant : ${enseignants}">
+	    			<img alt="" th:src="@{img/17239-200.png}" th:if="${enseignant.sexe} == 'F'">
+	    			<img alt="" th:src="@{img/17241-200.png}" th:if="${enseignant.sexe} == 'M'">
+	    			<br>	
+	    			<br>
+	    			<p class="text-center" th:text="${enseignant.prenom}+' '+${enseignant.nom}"></p>
+	    			<div class="admin">
+	    				<a th:href="@{/enseignant(id=${enseignant.id})}" title="voir profil"><i class="far fa-eye"></i></a>
+	    				<a th:href="@{/update-enseignant(id=${enseignant.id})}" title="modifier"><i class="far fa-edit"></i></a>
+	    				<a th:href="@{/delete-enseignant(id=${enseignant.id})}" title="supprimer" class="deleteConfirm"><i class="fas fa-trash-alt"></i></a>
+	    			</div>
+	    		</li>
+	  		</ul>
+  		</section>
+		<div class="modal fade" id="confirmDeleteDialog" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Confirmation</h4>
+					</div>
+					<div class="modal-body">
+						<p>Supprimer définitivement l'enseignant?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+						<button type="button" class="btn btn-danger" id="deleteOK">Supprimer</button>
+				
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" th:src="@{js/jquery-3.3.1/jquery-3.3.1.min.js}"></script>
+	<script type="text/javascript" th:src="@{js/bootstrap-3.3.7/dist/js/bootstrap.min.js}"></script>
+	<script type="text/javascript">
+		$("a.deleteConfirm").on('click', function(e) {
+			event.preventDefault();
+			var link = $(this).attr('href');
+			$('#confirmDeleteDialog').modal('show').one('click', '#deleteOK', function(e) {
+				window.location=link;
+			});
+		});
+	</script>
+</body>
+</html>

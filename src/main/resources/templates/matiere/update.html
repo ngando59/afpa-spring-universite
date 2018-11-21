@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="'Universite | '+${page}"></title>
+<base href="../">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<link rel="stylesheet" type="text/css" th:href="@{js/bootstrap-3.3.7/dist/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/default.css}">
+</head>
+<body>
+	<div class="container">
+		<header th:insert="fragments/header.html :: header"></header>
+		<section class="content">
+		  	<h2>Mise à jour matière</h2>
+	  		<div th:if="${matiere != null}">
+	  			<form id="updateMatiereForm" class="form-horizontal" th:action="@{matiere/update}" method="post" th:object="${matiere}">
+	  				<input type="hidden" name="id" th:field="*{id}" >
+	  				<fieldset class="infos-perso">
+	  					<legend>Informations matiere</legend>
+						<div class="form-group">
+      						<label class="control-label col-sm-2" for="nom">Numéro :</label>
+      						<div class="col-sm-10">
+        						<input type="number" class="form-control" name="numeroMatiere" th:field="*{numeroMatiere}" readonly="readonly">
+      							<p class="error"></p>
+      						</div>     				
+    					</div>
+						<div class="form-group">
+      						<label class="control-label col-sm-2" for="nom">Intitulé :</label>
+      						<div class="col-sm-10">
+        						<input type="text" class="form-control" name="nom" th:field="*{nom}">
+      							<p class="error"></p>
+      						</div>     				
+    					</div>
+    					<div class="form-group">
+      						<label class="control-label col-sm-2" for="nom">Coefficient :</label>
+      						<div class="col-sm-10">
+        						<input type="number" class="form-control" name="coef" th:field="*{coef}">
+      							<p class="error"></p>
+      						</div>     				
+    					</div>
+		    			<div class="form-group">
+		      				<label class="control-label col-sm-2" for="dateNaissance">Date de début :</label>
+		      				<div class="col-sm-10">
+		        				<input type="date" class="form-control" name="dateDebut" th:value="${#dates.format(matiere.dateDebut,'dd/MM/yyyy')}" th:field="*{dateDebut}">
+		      					<p class="error"></p>
+		      				</div>   				
+		    			</div>   			
+						<div class="form-group">
+		      				<label class="control-label col-sm-2" for="dateNaissance">Date de fin :</label>
+		      				<div class="col-sm-10">
+		        				<input type="date" class="form-control" name="dateFin" th:field="*{dateFin}">
+		      					<p class="error"></p>
+		      				</div>   				
+		    			</div> 
+		    			<div class="form-group">
+		      				<label class="control-label col-sm-2" for="sexe">Enseignant :</label>
+		      				<div class="col-sm-10">
+		        				<select class="form-control" name="enseignant" th:field="*{enseignant}">
+							        <option th:each="e : ${enseignants}" th:value="${e.id}" th:text="${e.prenom}+' '+${e.nom}"></option>
+						      	</select>
+						      	<p class="error"></p>
+		      				</div>
+		    			</div> 
+		    			<div class="form-group">        
+		      				<div class="col-sm-offset-2 col-sm-10">
+		        				<button type="submit" class="btn btn-default" onclick="return valideUpdateMatiereForm()">Mettre à jour</button>
+		      				</div>
+		    			</div>
+	  				</fieldset>
+	  			</form>
+	  		</div>
+		</section>
+	</div>
+	<script type="text/javascript" th:src="@{js/jquery-3.3.1/jquery-3.3.1.min.js}"></script>
+	<script type="text/javascript" th:src="@{js/form.js}"></script>
+</body>
+</html>

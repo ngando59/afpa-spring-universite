@@ -1,0 +1,16 @@
+<meta charset="UTF-8">
+<html xmlns:th="http://www.thymeleaf.org">
+	<nav class="navbar navbar-inverse" th:fragment="header">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/">Université</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      	<li th:class="${page.equals('Accueil')} ? active"><a href="/">Accueil</a></li>
+	 		<li th:class="${page.equals('Matieres') || page.equals('Matiere') } ? active"><a href="/matieres">Matieres</a></li>
+	 		<li th:class="${page.equals('Etudiant') || page.equals('Etudiants') } ? active"><a href="/etudiants">Etudiants</a></li>
+	 		<li th:class="${page.equals('Enseignant') || page.equals('Enseignants') } ? active"><a href="/enseignants">Enseignants</a></li>
+	    </ul>
+	  </div>
+	</nav>
+</html>

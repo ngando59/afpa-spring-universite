@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="'Universite | '+${page}"></title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<link rel="stylesheet" type="text/css" th:href="@{js/bootstrap-3.3.7/dist/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/default.css}">
+</head>
+<body>
+	<div class="container">
+		<header th:insert="fragments/header.html :: header"></header>
+		<section class="content">
+		  	<h2>Enseignant</h2>
+	  		<div th:if="${enseignant != null}">
+	  			<div class="div-ico-user">
+	  				<img class="ico-user" alt="" th:src="@{img/17239-200.png}" th:if="${enseignant.sexe} == 'F'">
+	    			<img class="ico-user" alt="" th:src="@{img/17241-200.png}" th:if="${enseignant.sexe} == 'M'">
+	  			</div>
+	  		 	<fieldset class="infos-perso">
+	  				<legend>Informations personelles</legend>
+					<i class="fas fa-user"></i><span th:text="${enseignant.nom}+' '+${enseignant.prenom}"></span><br>
+					<i class="fas fa-birthday-cake"></i><span th:text="${#dates.format(enseignant.dateNaissance,'dd/MM/yyyy')}"></span><br>
+					<i class="fas fa-graduation-cap"></i><span th:text="${enseignant.grade}"></span><br>
+					<i class="fas fa-calendar-alt"></i><span th:text="${#dates.format(enseignant.dateEmbauche,'dd/MM/yyyy')}"></span><br>
+	  			</fieldset>
+	  			<fieldset class="infos-perso">
+	  				<legend>Matières enseignées</legend>
+					<ul>
+						<li th:each="matiere : ${enseignant.matieres}">
+							<span th:text="${matiere.nom}"></span>
+						</li>
+					</ul>
+	  			</fieldset>
+	  		</div>
+		</section>
+	</div>
+</body>
+</html>
