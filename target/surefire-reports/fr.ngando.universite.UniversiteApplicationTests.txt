@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: fr.ngando.universite.UniversiteApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.418 s - in fr.ngando.universite.UniversiteApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.138 s - in fr.ngando.universite.UniversiteApplicationTests

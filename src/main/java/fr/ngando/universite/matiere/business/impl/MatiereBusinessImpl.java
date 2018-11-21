@@ -25,26 +25,22 @@ public class MatiereBusinessImpl implements IMatiereBusiness {
 
 	@Override
 	public List<Matiere> findAll() {
-		List<Matiere> matieres = matiereRepository.findAll();
-		return matieres;
+		return matiereRepository.findAll();
 	}
 
 	@Override
 	public List<Enseignant> findAllEnseigant() {
-		List<Enseignant> enseignants = enseignantBusiness.findAll();
-		return enseignants;
+		return enseignantBusiness.findAll();
 	}
 
 	@Override
 	public List<Note> findAllNotesByMatiere(Matiere matiere) {
-		List<Note> notes = noteBusiness.findNoteByMatiere(matiere);
-		return notes;
+		return noteBusiness.findNoteByMatiere(matiere);
 	}
 
 	@Override
 	public Matiere findOneById(Integer id) {
-		Matiere matiere = matiereRepository.getOne(id);
-		return matiere;
+		return matiereRepository.getOne(id);
 	}
 
 	@Override

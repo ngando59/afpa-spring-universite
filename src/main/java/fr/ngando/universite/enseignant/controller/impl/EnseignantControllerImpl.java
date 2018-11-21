@@ -18,6 +18,9 @@ import fr.ngando.universite.enseignant.domain.Enseignant;
 @Controller
 public class EnseignantControllerImpl implements IEnseignantController {
 
+	public final static String PAGE_ENSEIGNANT = "Enseignant";
+	public final static String PAGE_ENSEIGNANTS = "Enseignants";
+
 	@Autowired
 	private IEnseignantBusiness enseignantBusiness;
 
@@ -32,9 +35,8 @@ public class EnseignantControllerImpl implements IEnseignantController {
 	@Override
 	@RequestMapping("/enseignant")
 	public String enseignant(Model model, @RequestParam Integer id) {
-		String page = "Enseignant";
 		Enseignant enseignant = enseignantBusiness.findOneById(id);
-		model.addAttribute("page", page);
+		model.addAttribute("page", PAGE_ENSEIGNANT);
 		model.addAttribute("enseignant", enseignant);
 		return "enseignant/enseignant";
 	}
@@ -42,9 +44,8 @@ public class EnseignantControllerImpl implements IEnseignantController {
 	@Override
 	@RequestMapping("/enseignants")
 	public String enseignants(Model model) {
-		String page = "Enseignants";
 		List<Enseignant> enseignants = enseignantBusiness.findAll();
-		model.addAttribute("page", page);
+		model.addAttribute("page", PAGE_ENSEIGNANTS);
 		model.addAttribute("enseignants", enseignants);
 		return "enseignant/enseignants";
 	}
@@ -53,19 +54,17 @@ public class EnseignantControllerImpl implements IEnseignantController {
 	@Override
 	@RequestMapping("/new-enseignant")
 	public String formAddEnseignant(Model model) {
-		String page = "Enseignants";
 		model.addAttribute("enseignant", new Enseignant(null, 10008, "Biya", "Popaul", new Date(1933, 02, 14), 'M',
 				"ASS", new Date(1982, 10, 01)));
-		model.addAttribute("page", page);
+		model.addAttribute("page", PAGE_ENSEIGNANTS);
 		return "enseignant/add-form";
 	}
 
 	@Override
 	@RequestMapping("/update-enseignant")
 	public String formUpdateEnseignant(Model model, @RequestParam Integer id) {
-		String page = "Enseignant";
 		Enseignant enseignant = enseignantBusiness.findOneById(id);
-		model.addAttribute("page", page);
+		model.addAttribute("page", PAGE_ENSEIGNANT);
 		model.addAttribute("enseignant", enseignant);
 		return "enseignant/update-form";
 	}
@@ -74,8 +73,7 @@ public class EnseignantControllerImpl implements IEnseignantController {
 	@PostMapping("/insertEnseignant")
 	public String insertEnseignant(Model model, @ModelAttribute Enseignant enseignant) {
 		String message = enseignantBusiness.insert(enseignant);
-		String page = "Enseignant";
-		model.addAttribute("page", page);
+		model.addAttribute("page", PAGE_ENSEIGNANT);
 		if (message.startsWith("[E]:")) {
 			model.addAttribute("messageError", message.substring(4));
 			return "enseignant/add-form";

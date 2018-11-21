@@ -1,4 +1,7 @@
+fr\ngando\universite\accueil\controller\impl\AcceuilControllerImpl.class
 fr\ngando\universite\enseignant\controller\IEnseignantController.class
+fr\ngando\universite\DecimalFormatPrintable.class
+fr\ngando\universite\note\domain\NotePK.class
 fr\ngando\universite\etudiant\domain\Etudiant.class
 fr\ngando\universite\matiere\controller\IMatiereController.class
 fr\ngando\universite\enseignant\controller\impl\EnseignantControllerImpl.class
@@ -9,11 +12,17 @@ fr\ngando\universite\etudiant\business\impl\EtudiantBusinessImpl.class
 fr\ngando\universite\UniversiteApplication.class
 fr\ngando\universite\enseignant\business\IEnseignantBusiness.class
 fr\ngando\universite\etudiant\controller\IEtudiantController.class
+fr\ngando\universite\note\business\INoteBusiness.class
+fr\ngando\universite\accueil\controller\IAccueilController.class
+fr\ngando\universite\Utils.class
 fr\ngando\universite\matiere\domain\Matiere.class
 fr\ngando\universite\etudiant\controller\impl\EtudiantControllerImpl.class
 fr\ngando\universite\enseignant\repository\IEnseignantRepository.class
+fr\ngando\universite\note\business\impl\NoteBusinessImpl.class
 fr\ngando\universite\matiere\business\impl\MatiereBusinessImpl.class
 fr\ngando\universite\matiere\controller\impl\IMatiereControllerImpl.class
 fr\ngando\universite\etudiant\repository\IEtudiantRepository.class
 fr\ngando\universite\enseignant\domain\Enseignant.class
+fr\ngando\universite\note\domain\Note.class
 fr\ngando\universite\enseignant\business\impl\EnseignantBusinessImpl.class
+fr\ngando\universite\note\repository\INoteRepository.class

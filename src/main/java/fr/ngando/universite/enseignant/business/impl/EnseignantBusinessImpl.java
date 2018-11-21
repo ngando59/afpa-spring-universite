@@ -26,14 +26,12 @@ public class EnseignantBusinessImpl implements IEnseignantBusiness {
 
 	@Override
 	public List<Enseignant> findAll() {
-		List<Enseignant> enseignants = enseignantRepository.findAll();
-		return enseignants;
+		return enseignantRepository.findAll();
 	}
 
 	@Override
 	public Enseignant findOneById(Integer id) {
-		Enseignant enseignant = enseignantRepository.getOne(id);
-		return enseignant;
+		return enseignantRepository.getOne(id);
 	}
 
 	@Override
@@ -49,14 +47,7 @@ public class EnseignantBusinessImpl implements IEnseignantBusiness {
 			}
 		}
 		if (!exists) {
-			Enseignant enseignant2 = enseignantRepository.save(enseignant);
-			if (enseignant2 != null) {
-				message = "[S]:Enseignant enregistré !";
-				LOGGER.info("nouvel enseignant enregistré!");
-			} else {
-				message = "[E]:Erreur lors de l'enregistrement !";
-				LOGGER.info("echec enregistrement enseignant!");
-			}
+			enseignantRepository.save(enseignant);
 		}
 		return message;
 	}

@@ -19,16 +19,18 @@ import fr.ngando.universite.note.domain.Note;
 @Controller
 public class IMatiereControllerImpl implements IMatiereController {
 
+	private final static String PAGE_MATIERE = "Matiere";
+	private final static String PAGE_MATIERES = "Matieres";
+
 	@Autowired
 	private IMatiereBusiness matiereBusiness;
 
 	@Override
 	@RequestMapping("/matiere")
 	public String matiere(Model model, @RequestParam Integer id) {
-		String page = "Matiere";
 		Matiere matiere = matiereBusiness.findOneById(id);
 		List<Note> notes = matiereBusiness.findAllNotesByMatiere(matiere);
-		model.addAttribute("page", page);
+		model.addAttribute("page", PAGE_MATIERE);
 		model.addAttribute("matiere", matiere);
 		model.addAttribute("notes", notes);
 		return "matiere/matiere";
@@ -37,9 +39,9 @@ public class IMatiereControllerImpl implements IMatiereController {
 	@Override
 	@RequestMapping("/matieres")
 	public String matieres(Model model) {
-		String page = "Matieres";
+
 		List<Matiere> matieres = matiereBusiness.findAll();
-		model.addAttribute("page", page);
+		model.addAttribute("page", PAGE_MATIERES);
 		model.addAttribute("matieres", matieres);
 		return "matiere/matieres";
 	}
@@ -47,10 +49,9 @@ public class IMatiereControllerImpl implements IMatiereController {
 	@Override
 	@RequestMapping("matiere/update")
 	public String update(Model model, Integer id) {
-		String page = "Matiere";
 		Matiere matiere = matiereBusiness.findOneById(id);
 		List<Enseignant> enseignants = matiereBusiness.findAllEnseigant();
-		model.addAttribute("page", page);
+		model.addAttribute("page", PAGE_MATIERE);
 		model.addAttribute("enseignants", enseignants);
 		model.addAttribute("matiere", matiere);
 		return "matiere/update";

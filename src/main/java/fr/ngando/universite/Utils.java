@@ -10,14 +10,14 @@ import fr.ngando.universite.note.domain.Note;
 
 public class Utils {
 
-	public final static Integer notation = 20;
+	private final static Integer NOTATION = 20;
 	@SuppressWarnings("unused")
-	private static Logger LOGGER = LoggerFactory.getLogger(Utils.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(Utils.class);
 
 	public static Integer coefTotal(List<Note> notes) {
 		Integer total = 0;
 		for (Note n : notes) {
-			total += (notation * n.getMatiere().getCoef());
+			total += (NOTATION * n.getMatiere().getCoef());
 		}
 		return total;
 	}
@@ -28,11 +28,11 @@ public class Utils {
 		if (coefTotal.equals(0)) {
 			return 0.0;
 		}
-		return (noteTotal * notation) / coefTotal;
+		return (noteTotal * NOTATION) / coefTotal;
 	}
 
 	public static Integer noteMax(Note note) {
-		return (notation * note.getMatiere().getCoef());
+		return (NOTATION * note.getMatiere().getCoef());
 	}
 
 	public static Double noteTotal(List<Note> notes) {

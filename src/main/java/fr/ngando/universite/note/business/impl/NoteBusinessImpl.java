@@ -20,15 +20,12 @@ public class NoteBusinessImpl implements INoteBusiness {
 
 	@Override
 	public Note findNote(Etudiant etudiant, Matiere matiere) {
-		Note note = noteRepository.getOne(new NotePK(etudiant.getId(), matiere.getId()));
-		return note;
+		return noteRepository.getOne(new NotePK(etudiant.getId(), matiere.getId()));
 	}
 
 	@Override
 	public List<Note> findNoteByMatiere(Matiere matiere) {
-		List<Note> notes = matiere.getNotes();
-		// List<Note> notes = noteRepository.findAll(new Sort(Sort.Direction.DESC, ""));
-		return notes;
+		return matiere.getNotes();
 	}
 
 }

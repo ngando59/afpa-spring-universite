@@ -30,32 +30,27 @@ public class EtudiantBusinessImpl implements IEtudiantBusiness {
 
 	@Override
 	public List<Etudiant> findAll() {
-		List<Etudiant> etudiants = etudiantRepository.findAll();
-		return etudiants;
+		return etudiantRepository.findAll();
 	}
 
 	@Override
 	public List<Etudiant> findAllMen() {
-		List<Etudiant> etudiants = etudiantRepository.findBySexe('M');
-		return etudiants;
+		return etudiantRepository.findBySexe('M');
 	}
 
 	@Override
 	public List<Note> findAllNoteMoreThan10(Etudiant etudiant) {
-		List<Note> notes = noteRepository.findByNoteGreaterThanEqualAndIdEtudiantIs(10.0, etudiant.getId());
-		return notes;
+		return noteRepository.findByNoteGreaterThanEqualAndIdEtudiantIs(10.0, etudiant.getId());
 	}
 
 	@Override
 	public List<Etudiant> findAllWomen() {
-		List<Etudiant> etudiants = etudiantRepository.findBySexe('M');
-		return etudiants;
+		return etudiantRepository.findBySexe('M');
 	}
 
 	@Override
 	public Etudiant findOneById(Integer id) {
-		Etudiant etudiant = etudiantRepository.getOne(id);
-		return etudiant;
+		return etudiantRepository.getOne(id);
 	}
 
 	@Override
@@ -71,15 +66,7 @@ public class EtudiantBusinessImpl implements IEtudiantBusiness {
 			}
 		}
 		if (!exists) {
-			Etudiant etudiant2 = null;
-			etudiant2 = etudiantRepository.save(etudiant);
-			if (etudiant2 != null) {
-				message = "[S]:Nouvel etudiant enregistré !";
-				LOGGER.info("nouvel etudiant enregistré !");
-			} else {
-				message = "[E]:Erreur lors de l'enregistrement !";
-				LOGGER.info("echec enregistrement etudiant !");
-			}
+			etudiantRepository.save(etudiant);
 		}
 		return message;
 	}
