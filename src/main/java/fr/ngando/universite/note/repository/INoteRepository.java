@@ -8,5 +8,5 @@ import fr.ngando.universite.note.domain.Note;
 import fr.ngando.universite.note.domain.NotePK;
 
 public interface INoteRepository extends JpaRepository<Note, NotePK> {
-	List<Note> findByNoteGreaterThanEqualAndIdEtudiantIs(Double limit, Integer id);
+	List<Note> findByValueGreaterThanEqualAndIdEtudiantIs(Double limit, Integer id);
 }

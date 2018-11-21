@@ -40,7 +40,7 @@ public class EtudiantBusinessImpl implements IEtudiantBusiness {
 
 	@Override
 	public List<Note> findAllNoteMoreThan10(Etudiant etudiant) {
-		return noteRepository.findByNoteGreaterThanEqualAndIdEtudiantIs(10.0, etudiant.getId());
+		return noteRepository.findByValueGreaterThanEqualAndIdEtudiantIs(10.0, etudiant.getId());
 	}
 
 	@Override
