@@ -1,5 +1,6 @@
 package fr.ngando.universite.enseignant.controller.impl;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,9 @@ public class EnseignantControllerImpl implements IEnseignantController {
 
 	public final static String PAGE_ENSEIGNANT = "Enseignant";
 	public final static String PAGE_ENSEIGNANTS = "Enseignants";
+	public final static String PAGE = "page";
+	public final static String ENSEIGNANT = "enseignant";
+	public final static String ENSEIGNANTS = "enseignants";
 
 	@Autowired
 	private IEnseignantBusiness enseignantBusiness;
@@ -36,8 +40,8 @@ public class EnseignantControllerImpl implements IEnseignantController {
 	@RequestMapping("/enseignant")
 	public String enseignant(Model model, @RequestParam Integer id) {
 		Enseignant enseignant = enseignantBusiness.findOneById(id);
-		model.addAttribute("page", PAGE_ENSEIGNANT);
-		model.addAttribute("enseignant", enseignant);
+		model.addAttribute(PAGE, PAGE_ENSEIGNANT);
+		model.addAttribute(ENSEIGNANT, enseignant);
 		return "enseignant/enseignant";
 	}
 
@@ -45,18 +49,27 @@ public class EnseignantControllerImpl implements IEnseignantController {
 	@RequestMapping("/enseignants")
 	public String enseignants(Model model) {
 		List<Enseignant> enseignants = enseignantBusiness.findAll();
-		model.addAttribute("page", PAGE_ENSEIGNANTS);
-		model.addAttribute("enseignants", enseignants);
+		model.addAttribute(PAGE, PAGE_ENSEIGNANTS);
+		model.addAttribute(ENSEIGNANTS, enseignants);
 		return "enseignant/enseignants";
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	@RequestMapping("/new-enseignant")
 	public String formAddEnseignant(Model model) {
-		model.addAttribute("enseignant", new Enseignant(null, 10008, "Biya", "Popaul", new Date(1933, 02, 14), 'M',
-				"ASS", new Date(1982, 10, 01)));
-		model.addAttribute("page", PAGE_ENSEIGNANTS);
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, 1933);
+		cal.set(Calendar.MONTH, Calendar.FEBRUARY);
+		cal.set(Calendar.DAY_OF_MONTH, 14);
+		Date dateNaissance = cal.getTime();
+		cal.set(Calendar.YEAR, 1982);
+		cal.set(Calendar.MONTH, Calendar.OCTOBER);
+		cal.set(Calendar.DAY_OF_MONTH, 1);
+		Date dateEmbauche = cal.getTime();
+
+		model.addAttribute(ENSEIGNANT,
+				new Enseignant(null, 10008, "Biya", "Popaul", dateNaissance, 'M', "ASS", dateEmbauche));
+		model.addAttribute(PAGE, PAGE_ENSEIGNANTS);
 		return "enseignant/add-form";
 	}
 
@@ -64,8 +77,8 @@ public class EnseignantControllerImpl implements IEnseignantController {
 	@RequestMapping("/update-enseignant")
 	public String formUpdateEnseignant(Model model, @RequestParam Integer id) {
 		Enseignant enseignant = enseignantBusiness.findOneById(id);
-		model.addAttribute("page", PAGE_ENSEIGNANT);
-		model.addAttribute("enseignant", enseignant);
+		model.addAttribute(PAGE, PAGE_ENSEIGNANT);
+		model.addAttribute(ENSEIGNANT, enseignant);
 		return "enseignant/update-form";
 	}
 
@@ -73,14 +86,14 @@ public class EnseignantControllerImpl implements IEnseignantController {
 	@PostMapping("/insertEnseignant")
 	public String insertEnseignant(Model model, @ModelAttribute Enseignant enseignant) {
 		String message = enseignantBusiness.insert(enseignant);
-		model.addAttribute("page", PAGE_ENSEIGNANT);
+		model.addAttribute(PAGE, PAGE_ENSEIGNANT);
 		if (message.startsWith("[E]:")) {
 			model.addAttribute("messageError", message.substring(4));
 			return "enseignant/add-form";
 		} else if (message.startsWith("[S]:")) {
 			model.addAttribute("messageSuccess", message.substring(4));
 			List<Enseignant> enseignants = enseignantBusiness.findAll();
-			model.addAttribute("enseignants", enseignants);
+			model.addAttribute(ENSEIGNANTS, enseignants);
 			return "enseignant/enseignants";
 		}
 		return null;

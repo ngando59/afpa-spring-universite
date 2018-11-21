@@ -16,7 +16,7 @@ import fr.ngando.universite.note.repository.INoteRepository;
 @Service
 public class EtudiantBusinessImpl implements IEtudiantBusiness {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(EtudiantBusinessImpl.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(EtudiantBusinessImpl.class);
 
 	@Autowired
 	private IEtudiantRepository etudiantRepository;

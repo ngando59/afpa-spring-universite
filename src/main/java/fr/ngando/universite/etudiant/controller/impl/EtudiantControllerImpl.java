@@ -1,5 +1,6 @@
 package fr.ngando.universite.etudiant.controller.impl;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -18,10 +19,11 @@ import fr.ngando.universite.note.domain.Note;
 
 @Controller
 public class EtudiantControllerImpl implements IEtudiantController {
-
-	private final static String PAGE_ETUDIANTS = "Etudiants";
 	private final static String PAGE_ETUDIANT = "Etudiant";
-
+	private final static String PAGE_ETUDIANTS = "Etudiants";
+	public final static String PAGE = "page";
+	public final static String ETUDIANT = "etudiant";
+	public final static String ETUDIANTS = "etudiants";
 	@Autowired
 	private IEtudiantBusiness etudiantBusiness;
 
@@ -38,8 +40,8 @@ public class EtudiantControllerImpl implements IEtudiantController {
 	public String etudiant(Model model, Integer id) {
 		Etudiant etudiant = etudiantBusiness.findOneById(id);
 		List<Note> noteMoreThan10 = etudiantBusiness.findAllNoteMoreThan10(etudiant);
-		model.addAttribute("page", PAGE_ETUDIANT);
-		model.addAttribute("etudiant", etudiant);
+		model.addAttribute(PAGE, PAGE_ETUDIANT);
+		model.addAttribute(ETUDIANT, etudiant);
 		model.addAttribute("noteMoreThan10", noteMoreThan10);
 		return "etudiant/etudiant";
 	}
@@ -47,13 +49,17 @@ public class EtudiantControllerImpl implements IEtudiantController {
 	@Override
 	@GetMapping("/etudiants")
 	public String etudiants(Model model) {
-		@SuppressWarnings("deprecation")
-		Etudiant etudiant = new Etudiant(null, 10514, "Sparrow", "Jack", new Date(2000, 02, 14), 'M',
-				"j.pirate@gmail.com", "Pacifique");
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, 2000);
+		cal.set(Calendar.MONTH, Calendar.FEBRUARY);
+		cal.set(Calendar.DAY_OF_MONTH, 14);
+		Date dateNaissance = cal.getTime();
+		Etudiant etudiant = new Etudiant(null, 10514, "Sparrow", "Jack", dateNaissance, 'M', "j.pirate@gmail.com",
+				"Pacifique");
 		List<Etudiant> etudiants = etudiantBusiness.findAll();
-		model.addAttribute("page", PAGE_ETUDIANTS);
-		model.addAttribute("etudiants", etudiants);
-		model.addAttribute("etudiant", etudiant);
+		model.addAttribute(PAGE, PAGE_ETUDIANTS);
+		model.addAttribute(ETUDIANTS, etudiants);
+		model.addAttribute(ETUDIANT, etudiant);
 		return "etudiant/etudiants";
 	}
 
@@ -67,9 +73,9 @@ public class EtudiantControllerImpl implements IEtudiantController {
 		} else if (message.startsWith("[S]:")) {
 			model.addAttribute("messageSuccess", message.substring(4));
 		}
-		model.addAttribute("page", PAGE_ETUDIANTS);
-		model.addAttribute("etudiants", etudiants);
-		model.addAttribute("etudiant", etudiant);
+		model.addAttribute(PAGE, PAGE_ETUDIANTS);
+		model.addAttribute(ETUDIANTS, etudiants);
+		model.addAttribute(ETUDIANT, etudiant);
 		return "etudiant/etudiants";
 	}
 
@@ -84,8 +90,8 @@ public class EtudiantControllerImpl implements IEtudiantController {
 	@GetMapping("/etudiant/update")
 	public String update(Model model, Integer id) {
 		Etudiant etudiant = etudiantBusiness.findOneById(id);
-		model.addAttribute("page", PAGE_ETUDIANT);
-		model.addAttribute("etudiant", etudiant);
+		model.addAttribute(PAGE, PAGE_ETUDIANT);
+		model.addAttribute(ETUDIANT, etudiant);
 		return "etudiant/update";
 	}
 

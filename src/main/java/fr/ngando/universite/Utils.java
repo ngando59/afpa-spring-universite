@@ -50,4 +50,7 @@ public class Utils {
 		df.setDecimalSeparatorAlwaysShown(true);
 		return df.format(d);
 	}
+
+	private Utils() {
+	}
 }
