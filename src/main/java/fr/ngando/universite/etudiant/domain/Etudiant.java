@@ -44,19 +44,6 @@ public class Etudiant {
 		super();
 	}
 
-	public Etudiant(Integer id, Integer numEtudiant, String nom, String prenom, Date dateNaissance, Character sexe,
-			String email, String adresse) {
-		super();
-		this.id = id;
-		this.numEtudiant = numEtudiant;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
-		this.sexe = sexe;
-		this.email = email;
-		this.adresse = adresse;
-	}
-
 	public String getAdresse() {
 		return adresse;
 	}
@@ -96,7 +83,7 @@ public class Etudiant {
 	public Double getTotalNotes() {
 		Double total = 0.0;
 		for (Note n : this.notes) {
-			total += n.getNote();
+			total += n.getValue();
 		}
 		return total;
 	}

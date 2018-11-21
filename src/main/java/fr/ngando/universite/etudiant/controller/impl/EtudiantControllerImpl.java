@@ -54,8 +54,13 @@ public class EtudiantControllerImpl implements IEtudiantController {
 		cal.set(Calendar.MONTH, Calendar.FEBRUARY);
 		cal.set(Calendar.DAY_OF_MONTH, 14);
 		Date dateNaissance = cal.getTime();
-		Etudiant etudiant = new Etudiant(null, 10514, "Sparrow", "Jack", dateNaissance, 'M', "j.pirate@gmail.com",
-				"Pacifique");
+		Etudiant etudiant = new Etudiant();
+		etudiant.setNumEtudiant(10514);
+		etudiant.setNom("Sparrow");
+		etudiant.setPrenom("Jack");
+		etudiant.setDateNaissance(dateNaissance);
+		etudiant.setSexe('M');
+		etudiant.setEmail("j.pirate@gmail.com");
 		List<Etudiant> etudiants = etudiantBusiness.findAll();
 		model.addAttribute(ATTR_PAGE, PAGE_ETUDIANTS);
 		model.addAttribute(ATTR_ETUDIANTS, etudiants);

@@ -45,19 +45,6 @@ public class Enseignant {
 		super();
 	}
 
-	public Enseignant(Integer id, Integer numeroEnseignant, String nom, String prenom, Date dateNaissance,
-			Character sexe, String grade, Date dateEmbauche) {
-		super();
-		this.id = id;
-		this.numeroEnseignant = numeroEnseignant;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
-		this.sexe = sexe;
-		this.grade = grade;
-		this.dateEmbauche = dateEmbauche;
-	}
-
 	public Date getDateEmbauche() {
 		return dateEmbauche;
 	}

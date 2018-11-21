@@ -42,9 +42,9 @@
 	  						<tbody>
 	  							<tr th:each="note : ${etudiant.notes}">
 	  								<td th:text="${note.matiere.nom}"></td>
-	  								<td class="text-right" th:text="${T(fr.ngando.universite.Utils).print2df(note.note)}"></td>
+	  								<td class="text-right" th:text="${T(fr.ngando.universite.Utils).print2df(note.value)}"></td>
 	  								<td class="text-right text-muted" th:text="${note.matiere.coef}"></td>
-	  								<td class="text-right" th:text="${T(fr.ngando.universite.Utils).print2df(note.note * note.matiere.coef)}"></td>
+	  								<td class="text-right" th:text="${T(fr.ngando.universite.Utils).print2df(note.value * note.matiere.coef)}"></td>
 	  								<td class="text-right text-muted" th:text="${T(fr.ngando.universite.Utils).noteMax(note)}"></td>
 	  							</tr>
 	  							<tr>
@@ -78,7 +78,7 @@
 	  						<tbody>
 	  							<tr th:each="note : ${noteMoreThan10}">
 	  								<td th:text="${note.matiere.nom}"></td>
-	  								<td class="text-right" th:text="${T(fr.ngando.universite.Utils).print2df(note.note)}"></td>
+	  								<td class="text-right" th:text="${T(fr.ngando.universite.Utils).print2df(note.value)}"></td>
 	  							</tr>
 	  						</tbody>	  						
 	  					</table>

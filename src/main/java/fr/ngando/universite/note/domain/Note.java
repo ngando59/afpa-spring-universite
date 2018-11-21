@@ -22,14 +22,14 @@ public class Note implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_matiere", insertable = false, updatable = false)
-	private transient Matiere matiere;
+	private Matiere matiere;
 
 	@ManyToOne
 	@JoinColumn(name = "id_etudiant", insertable = false, updatable = false)
-	private transient Etudiant etudiant;
+	private Etudiant etudiant;
 
 	@Column(name = "note")
-	private Double note;
+	private Double value;
 
 	public Etudiant getEtudiant() {
 		return etudiant;
@@ -43,8 +43,8 @@ public class Note implements Serializable {
 		return matiere;
 	}
 
-	public Double getNote() {
-		return note;
+	public Double getValue() {
+		return value;
 	}
 
 	public void setEtudiant(Etudiant etudiant) {
@@ -59,8 +59,8 @@ public class Note implements Serializable {
 		this.matiere = matiere;
 	}
 
-	public void setNote(Double note) {
-		this.note = note;
+	public void setValue(Double value) {
+		this.value = value;
 	}
 
 }

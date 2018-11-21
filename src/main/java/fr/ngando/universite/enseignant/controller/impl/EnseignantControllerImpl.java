@@ -66,9 +66,16 @@ public class EnseignantControllerImpl implements IEnseignantController {
 		cal.set(Calendar.MONTH, Calendar.OCTOBER);
 		cal.set(Calendar.DAY_OF_MONTH, 1);
 		Date dateEmbauche = cal.getTime();
+		Enseignant newEnseigant = new Enseignant();
+		newEnseigant.setNumeroEnseignant(10008);
+		newEnseigant.setNom("Biya");
+		newEnseigant.setPrenom("Popaul");
+		newEnseigant.setDateNaissance(dateNaissance);
+		newEnseigant.setSexe('M');
+		newEnseigant.setGrade("ASS");
+		newEnseigant.setDateEmbauche(dateEmbauche);
 
-		model.addAttribute(ATTR_ENSEIGNANT,
-				new Enseignant(null, 10008, "Biya", "Popaul", dateNaissance, 'M', "ASS", dateEmbauche));
+		model.addAttribute(ATTR_ENSEIGNANT, newEnseigant);
 		model.addAttribute(ATTR_PAGE, PAGE_ENSEIGNANTS);
 		return "enseignant/add-form";
 	}

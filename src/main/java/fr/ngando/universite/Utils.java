@@ -38,7 +38,7 @@ public class Utils {
 	public static Double noteTotal(List<Note> notes) {
 		Double total = 0.0;
 		for (Note n : notes) {
-			total += (n.getNote() * n.getMatiere().getCoef());
+			total += (n.getValue() * n.getMatiere().getCoef());
 		}
 		return total;
 	}
