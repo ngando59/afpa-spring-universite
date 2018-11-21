@@ -14,7 +14,7 @@ import fr.ngando.universite.enseignant.repository.IEnseignantRepository;
 @Service
 public class EnseignantBusinessImpl implements IEnseignantBusiness {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(EnseignantBusinessImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EnseignantBusinessImpl.class);
 
 	@Autowired
 	private IEnseignantRepository enseignantRepository;

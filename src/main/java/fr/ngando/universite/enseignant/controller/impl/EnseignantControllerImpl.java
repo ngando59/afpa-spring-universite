@@ -19,11 +19,11 @@ import fr.ngando.universite.enseignant.domain.Enseignant;
 @Controller
 public class EnseignantControllerImpl implements IEnseignantController {
 
-	public final static String PAGE_ENSEIGNANT = "Enseignant";
-	public final static String PAGE_ENSEIGNANTS = "Enseignants";
-	public final static String ATTR_PAGE = "page";
-	public final static String ATTR_ENSEIGNANT = "enseignant";
-	public final static String ATTR_ENSEIGNANTS = "enseignants";
+	public static final String PAGE_ENSEIGNANT = "Enseignant";
+	public static final String PAGE_ENSEIGNANTS = "Enseignants";
+	public static final String ATTR_PAGE = "page";
+	public static final String ATTR_ENSEIGNANT = "enseignant";
+	public static final String ATTR_ENSEIGNANTS = "enseignants";
 
 	@Autowired
 	private IEnseignantBusiness enseignantBusiness;

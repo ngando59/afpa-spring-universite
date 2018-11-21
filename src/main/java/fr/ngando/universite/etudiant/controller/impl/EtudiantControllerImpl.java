@@ -19,11 +19,11 @@ import fr.ngando.universite.note.domain.Note;
 
 @Controller
 public class EtudiantControllerImpl implements IEtudiantController {
-	private final static String PAGE_ETUDIANT = "Etudiant";
-	private final static String PAGE_ETUDIANTS = "Etudiants";
-	public final static String ATTR_PAGE = "page";
-	public final static String ATTR_ETUDIANT = "etudiant";
-	public final static String ATTR_ETUDIANTS = "etudiants";
+	private static final String PAGE_ETUDIANT = "Etudiant";
+	private static final String PAGE_ETUDIANTS = "Etudiants";
+	private static final String ATTR_PAGE = "page";
+	private static final String ATTR_ETUDIANT = "etudiant";
+	private static final String ATTR_ETUDIANTS = "etudiants";
 	@Autowired
 	private IEtudiantBusiness etudiantBusiness;
 

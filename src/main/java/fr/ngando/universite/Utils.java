@@ -10,9 +10,9 @@ import fr.ngando.universite.note.domain.Note;
 
 public class Utils {
 
-	private final static Integer NOTATION = 20;
+	private static final Integer NOTATION = 20;
 	@SuppressWarnings("unused")
-	private final static Logger LOGGER = LoggerFactory.getLogger(Utils.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Utils.class);
 
 	public static Integer coefTotal(List<Note> notes) {
 		Integer total = 0;

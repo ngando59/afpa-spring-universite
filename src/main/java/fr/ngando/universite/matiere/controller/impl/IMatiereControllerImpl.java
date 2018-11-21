@@ -19,11 +19,11 @@ import fr.ngando.universite.note.domain.Note;
 @Controller
 public class IMatiereControllerImpl implements IMatiereController {
 
-	private final static String PAGE_MATIERE = "Matiere";
-	private final static String PAGE_MATIERES = "Matieres";
-	private final static String ATTR_PAGE = "page";
-	private final static String ATTR_MATIERE = "matiere";
-	private final static String ATTR_MATIERES = "matieres";
+	private static final String PAGE_MATIERE = "Matiere";
+	private static final String PAGE_MATIERES = "Matieres";
+	private static final String ATTR_PAGE = "page";
+	private static final String ATTR_MATIERE = "matiere";
+	private static final String ATTR_MATIERES = "matieres";
 
 	@Autowired
 	private IMatiereBusiness matiereBusiness;
