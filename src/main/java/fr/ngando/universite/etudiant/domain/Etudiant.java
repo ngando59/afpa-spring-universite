@@ -15,7 +15,9 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import fr.ngando.universite.note.domain.Note;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "tbl_etudiant")
 public class Etudiant implements Serializable {
@@ -42,88 +44,12 @@ public class Etudiant implements Serializable {
 	@OneToMany(mappedBy = "etudiant")
 	private List<Note> notes;
 
-	public Etudiant() {
-		super();
-	}
-
-	public String getAdresse() {
-		return adresse;
-	}
-
-	public Date getDateNaissance() {
-		return dateNaissance;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public List<Note> getNotes() {
-		return notes;
-	}
-
-	public Integer getNumEtudiant() {
-		return numEtudiant;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public Character getSexe() {
-		return sexe;
-	}
-
 	public Double getTotalNotes() {
 		Double total = 0.0;
 		for (Note n : this.notes) {
 			total += n.getValue();
 		}
 		return total;
-	}
-
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public void setNotes(List<Note> notes) {
-		this.notes = notes;
-	}
-
-	public void setNumEtudiant(Integer numEtudiant) {
-		this.numEtudiant = numEtudiant;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public void setSexe(Character sexe) {
-		this.sexe = sexe;
 	}
 
 }

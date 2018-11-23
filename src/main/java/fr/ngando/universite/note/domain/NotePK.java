@@ -5,7 +5,10 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import lombok.Data;
+
 @Embeddable
+@Data
 public class NotePK implements Serializable {
 	/**
 	 *
@@ -16,29 +19,10 @@ public class NotePK implements Serializable {
 	@Column(name = "id_matiere")
 	private Integer matiere;
 
-	public NotePK() {
-		super();
-	}
-
 	public NotePK(Integer etudiant, Integer matiere) {
 		super();
 		this.etudiant = etudiant;
 		this.matiere = matiere;
 	}
 
-	public Integer getEtudiant() {
-		return etudiant;
-	}
-
-	public Integer getMatiere() {
-		return matiere;
-	}
-
-	public void setEtudiant(Integer etudiant) {
-		this.etudiant = etudiant;
-	}
-
-	public void setMatiere(Integer matiere) {
-		this.matiere = matiere;
-	}
 }

@@ -15,7 +15,9 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import fr.ngando.universite.matiere.domain.Matiere;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "tbl_enseignant")
 public class Enseignant implements Serializable {
@@ -42,81 +44,5 @@ public class Enseignant implements Serializable {
 	private Date dateEmbauche;
 	@OneToMany(mappedBy = "enseignant")
 	private List<Matiere> matieres;
-
-	public Enseignant() {
-		super();
-	}
-
-	public Date getDateEmbauche() {
-		return dateEmbauche;
-	}
-
-	public Date getDateNaissance() {
-		return dateNaissance;
-	}
-
-	public String getGrade() {
-		return grade;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public List<Matiere> getMatieres() {
-		return matieres;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public Integer getNumeroEnseignant() {
-		return numeroEnseignant;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public Character getSexe() {
-		return sexe;
-	}
-
-	public void setDateEmbauche(Date dateEmbauche) {
-		this.dateEmbauche = dateEmbauche;
-	}
-
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
-
-	public void setGrade(String grade) {
-		this.grade = grade;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setMatieres(List<Matiere> matieres) {
-		this.matieres = matieres;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public void setNumeroEnseignant(int numeroEnseignant) {
-		this.numeroEnseignant = numeroEnseignant;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public void setSexe(char sexe) {
-		this.sexe = sexe;
-	}
 
 }

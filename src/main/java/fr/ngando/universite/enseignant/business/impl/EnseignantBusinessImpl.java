@@ -2,19 +2,17 @@ package fr.ngando.universite.enseignant.business.impl;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.ngando.universite.enseignant.business.IEnseignantBusiness;
 import fr.ngando.universite.enseignant.domain.Enseignant;
 import fr.ngando.universite.enseignant.repository.IEnseignantRepository;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class EnseignantBusinessImpl implements IEnseignantBusiness {
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(EnseignantBusinessImpl.class);
 
 	@Autowired
 	private IEnseignantRepository enseignantRepository;
@@ -43,7 +41,7 @@ public class EnseignantBusinessImpl implements IEnseignantBusiness {
 			if (e.getNumeroEnseignant().intValue() == enseignant.getNumeroEnseignant().intValue()) {
 				exists = true;
 				message = "[E]:Ce numéro d'enseignant est déjà enregistré !";
-				LOGGER.info("tentative enregistrement numéro enseignant existant!");
+				log.info("tentative enregistrement numéro enseignant existant!");
 			}
 		}
 		if (!exists) {

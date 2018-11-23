@@ -11,9 +11,11 @@ import javax.persistence.Table;
 
 import fr.ngando.universite.etudiant.domain.Etudiant;
 import fr.ngando.universite.matiere.domain.Matiere;
+import lombok.Data;
 
 @Entity
 @Table(name = "tbl_note")
+@Data
 public class Note implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -30,37 +32,5 @@ public class Note implements Serializable {
 
 	@Column(name = "note")
 	private Double value;
-
-	public Etudiant getEtudiant() {
-		return etudiant;
-	}
-
-	public NotePK getId() {
-		return id;
-	}
-
-	public Matiere getMatiere() {
-		return matiere;
-	}
-
-	public Double getValue() {
-		return value;
-	}
-
-	public void setEtudiant(Etudiant etudiant) {
-		this.etudiant = etudiant;
-	}
-
-	public void setId(NotePK id) {
-		this.id = id;
-	}
-
-	public void setMatiere(Matiere matiere) {
-		this.matiere = matiere;
-	}
-
-	public void setValue(Double value) {
-		this.value = value;
-	}
 
 }
